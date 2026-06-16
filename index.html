@@ -14,8 +14,8 @@ body{font-family:'Roboto',sans-serif;background:#0a0f1e;color:#c8cdd8;display:fl
 .sidebar-brand{padding:18px 16px 14px;border-bottom:1px solid #1a2236;}
 .sidebar-brand .b1{font-size:17px;font-weight:700;color:#fff;letter-spacing:1px;}
 .sidebar-brand .b2{font-size:17px;font-weight:900;color:#e63946;letter-spacing:1px;}
-.sidebar-nav{flex:1;padding:8px 0;}
-.nav-item{display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer;font-size:13px;color:#6b7a99;transition:all .15s;border-left:3px solid transparent;}
+.sidebar-nav{flex:1;padding:8px 0;overflow-y:auto;}
+.nav-item{display:flex;align-items:center;gap:12px;padding:11px 20px;cursor:pointer;font-size:13px;color:#6b7a99;transition:all .15s;border-left:3px solid transparent;user-select:none;}
 .nav-item:hover{color:#c8cdd8;background:#111827;}
 .nav-item.active{color:#e63946;border-left-color:#e63946;background:#111827;}
 .nav-item svg{width:18px;height:18px;flex-shrink:0;}
@@ -35,6 +35,13 @@ body{font-family:'Roboto',sans-serif;background:#0a0f1e;color:#c8cdd8;display:fl
 .riello-logo{font-size:18px;font-weight:900;color:#e63946;letter-spacing:2px;font-style:italic;}
 
 .content{flex:1;overflow-y:auto;padding:12px 16px 16px;display:flex;flex-direction:column;gap:12px;}
+
+/* Pages */
+.page{display:none;flex-direction:column;gap:12px;flex:1;animation:fadeIn .3s ease;}
+.page.active{display:flex;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Schematic */
 .schematic-area{flex:1;min-height:420px;background:#0d1220;border:1px solid #1a2236;border-radius:10px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .schematic-area svg{width:100%;height:100%;max-height:500px;}
 
@@ -61,6 +68,44 @@ body{font-family:'Roboto',sans-serif;background:#0a0f1e;color:#c8cdd8;display:fl
 .sch-blue{fill:#3b82f6;}
 .sch-white{fill:#fff;}
 
+/* === ERRORI PAGE === */
+.errori-summary{display:flex;gap:16px;flex-shrink:0;}
+.err-stat-card{background:#111827;border:1px solid #1a2236;border-radius:10px;padding:18px 24px;display:flex;align-items:center;gap:16px;}
+.err-stat-card.red{border-color:#e6394644;}
+.err-stat-card.orange{border-color:#f59e0b44;}
+.err-stat-card.green{border-color:#2ecc7144;}
+.err-stat-num{font-size:32px;font-weight:900;}
+.err-stat-num.red{color:#e63946;}
+.err-stat-num.orange{color:#f59e0b;}
+.err-stat-num.green{color:#2ecc71;}
+.err-stat-label{font-size:11px;color:#6b7a99;text-transform:uppercase;letter-spacing:1px;line-height:1.5;}
+.err-stat-label strong{color:#c8cdd8;font-size:13px;display:block;}
+
+.err-table-wrap{flex:1;background:#111827;border:1px solid #1a2236;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
+.err-table-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #1a2236;}
+.err-table-header h2{font-size:15px;font-weight:700;color:#fff;letter-spacing:1px;}
+.err-table-header .err-count{font-size:12px;color:#6b7a99;}
+.err-table-scroll{flex:1;overflow-y:auto;}
+table.err-table{width:100%;border-collapse:collapse;}
+table.err-table th{background:#0d1220;text-align:left;padding:12px 20px;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#4a5670;font-weight:700;position:sticky;top:0;z-index:1;}
+table.err-table td{padding:12px 20px;border-bottom:1px solid #1a223666;font-size:13px;color:#c8cdd8;}
+table.err-table tr:hover td{background:#0d122088;}
+table.err-table .err-code{font-weight:700;color:#fff;font-family:'Roboto Mono',monospace;font-size:13px;letter-spacing:.5px;}
+.err-badge{padding:4px 12px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;display:inline-block;}
+.err-badge.attivo{background:#e6394622;color:#e63946;border:1px solid #e6394644;}
+.err-badge.risolto{background:#2ecc7118;color:#2ecc71;border:1px solid #2ecc7133;}
+.err-badge.incorso{background:#f59e0b1a;color:#f59e0b;border:1px solid #f59e0b33;}
+.err-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;}
+.err-dot.attivo{background:#e63946;box-shadow:0 0 8px #e6394688;}
+.err-dot.risolto{background:#2ecc71;}
+.err-dot.incorso{background:#f59e0b;box-shadow:0 0 8px #f59e0b88;}
+
+/* === PLACEHOLDER PAGES === */
+.placeholder-page{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:#0d1220;border:1px solid #1a2236;border-radius:10px;}
+.placeholder-page svg{width:64px;height:64px;stroke:#1a2236;stroke-width:1.5;}
+.placeholder-page h2{font-size:20px;font-weight:700;color:#2a3452;letter-spacing:2px;}
+.placeholder-page p{font-size:13px;color:#2a3452;}
+
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-track{background:#0a0f1e;}
 ::-webkit-scrollbar-thumb{background:#1a2236;border-radius:3px;}
@@ -72,41 +117,41 @@ body{font-family:'Roboto',sans-serif;background:#0a0f1e;color:#c8cdd8;display:fl
 <nav class="sidebar">
   <div class="sidebar-brand"><span class="b1">CONDEXA </span><span class="b2">PRO</span></div>
   <div class="sidebar-nav">
-    <div class="nav-item active">
+    <div class="nav-item active" onclick="showPage('home',this)">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10"/></svg>
       <span class="ni-text">Home</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" onclick="showPage('impostazioni',this)">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
       <span class="ni-text">Impostazioni</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" onclick="showPage('lingua',this)">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
       <span class="ni-text">Lingua</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" onclick="showPage('manutenzione',this)">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
       <span class="ni-text">Manutenzione</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" onclick="showPage('errori',this)">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       <span class="ni-text">Errori</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" onclick="showPage('programmazione',this)">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       <span class="ni-text">Programmazione<br>oraria</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" onclick="showPage('grafici',this)">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       <span class="ni-text">Grafici</span>
     </div>
-    <div class="nav-item">
+    <div class="nav-item" onclick="showPage('service',this)">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M12 2a2.5 2.5 0 00-2 1"/><path d="M3 18v1a2 2 0 002 2h14a2 2 0 002-2v-1"/></svg>
       <span class="ni-text">Service</span>
     </div>
   </div>
   <div class="sidebar-bottom">
-    <div class="nav-item">
+    <div class="nav-item" onclick="alert('Logout')">
       <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
       <span class="ni-text">Logout</span>
     </div>
@@ -117,15 +162,15 @@ body{font-family:'Roboto',sans-serif;background:#0a0f1e;color:#c8cdd8;display:fl
 <div class="main-wrap">
   <!-- TOP BAR -->
   <div class="topbar">
-    <span class="page-title">DASHBOARD</span>
+    <span class="page-title" id="pageTitleText">DASHBOARD</span>
     <div class="topbar-right">
       <div class="tr-item">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        11/05/2025
+        <span id="dateDisplay">11/05/2025</span>
       </div>
       <div class="tr-item">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        15:03
+        <span id="timeDisplay">15:03</span>
       </div>
       <div class="tr-item bell-wrap">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
@@ -137,283 +182,340 @@ body{font-family:'Roboto',sans-serif;background:#0a0f1e;color:#c8cdd8;display:fl
 
   <!-- CONTENT -->
   <div class="content">
-    <!-- SCHEMATIC -->
-    <div class="schematic-area">
-      <svg viewBox="0 0 960 460" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="boilerG" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#d0d4dc"/><stop offset="100%" stop-color="#a0a6b2"/>
-          </linearGradient>
-          <linearGradient id="pipeGrey" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#7a8094"/><stop offset="100%" stop-color="#555b6a"/>
-          </linearGradient>
-          <linearGradient id="hexG" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#2a2f3e"/><stop offset="100%" stop-color="#1a1f2e"/>
-          </linearGradient>
-        </defs>
 
-        <!-- === FLUE GAS COLLECTOR (top horizontal pipe) === -->
-        <rect x="210" y="22" width="530" height="28" rx="14" fill="url(#pipeGrey)" stroke="#555b6a" stroke-width="1"/>
-        <text x="752" y="20" class="sch-label" font-size="8">T collettore fumi</text>
-        <text x="752" y="34" class="sch-red sch-temp" font-size="13">67.8 °C</text>
+    <!-- ══════ HOME PAGE ══════ -->
+    <div class="page active" id="page-home">
+      <div class="schematic-area">
+        <svg viewBox="0 0 960 460" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="boilerG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d0d4dc"/><stop offset="100%" stop-color="#a0a6b2"/></linearGradient>
+            <linearGradient id="pipeGrey" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7a8094"/><stop offset="100%" stop-color="#555b6a"/></linearGradient>
+            <linearGradient id="hexG" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2a2f3e"/><stop offset="100%" stop-color="#1a1f2e"/></linearGradient>
+          </defs>
 
-        <!-- Vertical flue pipes from boilers -->
-        <rect x="285" y="50" width="16" height="40" rx="4" fill="url(#pipeGrey)"/>
-        <rect x="420" y="50" width="16" height="40" rx="4" fill="url(#pipeGrey)"/>
-        <rect x="555" y="50" width="16" height="40" rx="4" fill="url(#pipeGrey)"/>
-        <rect x="690" y="50" width="16" height="40" rx="4" fill="url(#pipeGrey)"/>
+          <!-- FLUE GAS COLLECTOR -->
+          <rect x="210" y="22" width="530" height="28" rx="14" fill="url(#pipeGrey)" stroke="#555b6a" stroke-width="1"/>
+          <text x="752" y="20" class="sch-label" font-size="8">T collettore fumi</text>
+          <text x="752" y="34" class="sch-red sch-temp" font-size="13">67.8 °C</text>
 
-        <!-- Flue temp labels -->
-        <text x="265" y="68" class="sch-label" font-size="7.5">T fumi M1</text>
-        <text x="272" y="80" class="sch-white sch-temp" font-size="10">61.2 °C</text>
-        <text x="400" y="68" class="sch-label" font-size="7.5">T fumi M2</text>
-        <text x="407" y="80" class="sch-white sch-temp" font-size="10">62.0 °C</text>
-        <text x="535" y="68" class="sch-label" font-size="7.5">T fumi M3</text>
-        <text x="542" y="80" class="sch-white sch-temp" font-size="10">60.7 °C</text>
-        <text x="670" y="68" class="sch-label" font-size="7.5">T fumi M4</text>
-        <text x="677" y="80" class="sch-white sch-temp" font-size="10">61.5 °C</text>
+          <!-- Vertical flue pipes -->
+          <rect x="285" y="50" width="16" height="40" rx="4" fill="url(#pipeGrey)"/>
+          <rect x="420" y="50" width="16" height="40" rx="4" fill="url(#pipeGrey)"/>
+          <rect x="555" y="50" width="16" height="40" rx="4" fill="url(#pipeGrey)"/>
+          <rect x="690" y="50" width="16" height="40" rx="4" fill="url(#pipeGrey)"/>
 
-        <!-- === 4 BOILERS === -->
-        <!-- Boiler 1 -->
-        <rect x="250" y="92" width="86" height="130" rx="5" fill="url(#boilerG)" stroke="#888" stroke-width="1"/>
-        <rect x="260" y="96" width="66" height="10" rx="2" fill="#bbb"/>
-        <text x="293" y="104" font-size="7" fill="#333" font-weight="700" text-anchor="middle">CP 135</text>
-        <rect x="270" y="145" width="46" height="28" rx="3" fill="#0a1628" stroke="#2563eb" stroke-width="1.5"/>
-        <rect x="274" y="149" width="38" height="20" rx="2" fill="#0f1d3a"/>
-        <text x="280" y="163" font-size="8" fill="#3b82f6" font-weight="700">74.8</text>
+          <!-- Flue temp labels -->
+          <text x="265" y="68" class="sch-label" font-size="7.5">T fumi M1</text>
+          <text x="272" y="80" class="sch-white sch-temp" font-size="10">61.2 °C</text>
+          <text x="400" y="68" class="sch-label" font-size="7.5">T fumi M2</text>
+          <text x="407" y="80" class="sch-white sch-temp" font-size="10">62.0 °C</text>
+          <text x="535" y="68" class="sch-label" font-size="7.5">T fumi M3</text>
+          <text x="542" y="80" class="sch-white sch-temp" font-size="10">60.7 °C</text>
+          <text x="670" y="68" class="sch-label" font-size="7.5">T fumi M4</text>
+          <text x="677" y="80" class="sch-white sch-temp" font-size="10">61.5 °C</text>
 
-        <!-- Boiler 2 -->
-        <rect x="385" y="92" width="86" height="130" rx="5" fill="url(#boilerG)" stroke="#888" stroke-width="1"/>
-        <rect x="395" y="96" width="66" height="10" rx="2" fill="#bbb"/>
-        <text x="428" y="104" font-size="7" fill="#333" font-weight="700" text-anchor="middle">CP 135</text>
-        <rect x="405" y="145" width="46" height="28" rx="3" fill="#0a1628" stroke="#2563eb" stroke-width="1.5"/>
-        <rect x="409" y="149" width="38" height="20" rx="2" fill="#0f1d3a"/>
-        <text x="415" y="163" font-size="8" fill="#3b82f6" font-weight="700">75.2</text>
+          <!-- BOILERS -->
+          <rect x="250" y="92" width="86" height="130" rx="5" fill="url(#boilerG)" stroke="#888" stroke-width="1"/>
+          <rect x="260" y="96" width="66" height="10" rx="2" fill="#bbb"/>
+          <text x="293" y="104" font-size="7" fill="#333" font-weight="700" text-anchor="middle">CP 135</text>
+          <rect x="270" y="145" width="46" height="28" rx="3" fill="#0a1628" stroke="#2563eb" stroke-width="1.5"/>
+          <rect x="274" y="149" width="38" height="20" rx="2" fill="#0f1d3a"/>
+          <text x="280" y="163" font-size="8" fill="#3b82f6" font-weight="700">74.8</text>
 
-        <!-- Boiler 3 -->
-        <rect x="520" y="92" width="86" height="130" rx="5" fill="url(#boilerG)" stroke="#888" stroke-width="1"/>
-        <rect x="530" y="96" width="66" height="10" rx="2" fill="#bbb"/>
-        <text x="563" y="104" font-size="7" fill="#333" font-weight="700" text-anchor="middle">CP 135</text>
-        <rect x="540" y="145" width="46" height="28" rx="3" fill="#0a1628" stroke="#2563eb" stroke-width="1.5"/>
-        <rect x="544" y="149" width="38" height="20" rx="2" fill="#0f1d3a"/>
-        <text x="550" y="163" font-size="8" fill="#3b82f6" font-weight="700">60.7</text>
+          <rect x="385" y="92" width="86" height="130" rx="5" fill="url(#boilerG)" stroke="#888" stroke-width="1"/>
+          <rect x="395" y="96" width="66" height="10" rx="2" fill="#bbb"/>
+          <text x="428" y="104" font-size="7" fill="#333" font-weight="700" text-anchor="middle">CP 135</text>
+          <rect x="405" y="145" width="46" height="28" rx="3" fill="#0a1628" stroke="#2563eb" stroke-width="1.5"/>
+          <rect x="409" y="149" width="38" height="20" rx="2" fill="#0f1d3a"/>
+          <text x="415" y="163" font-size="8" fill="#3b82f6" font-weight="700">75.2</text>
 
-        <!-- Boiler 4 -->
-        <rect x="655" y="92" width="86" height="130" rx="5" fill="url(#boilerG)" stroke="#888" stroke-width="1"/>
-        <rect x="665" y="96" width="66" height="10" rx="2" fill="#bbb"/>
-        <text x="698" y="104" font-size="7" fill="#333" font-weight="700" text-anchor="middle">CP 135</text>
-        <rect x="675" y="145" width="46" height="28" rx="3" fill="#0a1628" stroke="#2563eb" stroke-width="1.5"/>
-        <rect x="679" y="149" width="38" height="20" rx="2" fill="#0f1d3a"/>
-        <text x="685" y="163" font-size="8" fill="#3b82f6" font-weight="700">61.5</text>
+          <rect x="520" y="92" width="86" height="130" rx="5" fill="url(#boilerG)" stroke="#888" stroke-width="1"/>
+          <rect x="530" y="96" width="66" height="10" rx="2" fill="#bbb"/>
+          <text x="563" y="104" font-size="7" fill="#333" font-weight="700" text-anchor="middle">CP 135</text>
+          <rect x="540" y="145" width="46" height="28" rx="3" fill="#0a1628" stroke="#2563eb" stroke-width="1.5"/>
+          <rect x="544" y="149" width="38" height="20" rx="2" fill="#0f1d3a"/>
+          <text x="550" y="163" font-size="8" fill="#3b82f6" font-weight="700">60.7</text>
 
-        <!-- === PIPE CONNECTIONS: each boiler has a RED (mandata) pipe on left and BLUE (ritorno) pipe on right === -->
+          <rect x="655" y="92" width="86" height="130" rx="5" fill="url(#boilerG)" stroke="#888" stroke-width="1"/>
+          <rect x="665" y="96" width="66" height="10" rx="2" fill="#bbb"/>
+          <text x="698" y="104" font-size="7" fill="#333" font-weight="700" text-anchor="middle">CP 135</text>
+          <rect x="675" y="145" width="46" height="28" rx="3" fill="#0a1628" stroke="#2563eb" stroke-width="1.5"/>
+          <rect x="679" y="149" width="38" height="20" rx="2" fill="#0f1d3a"/>
+          <text x="685" y="163" font-size="8" fill="#3b82f6" font-weight="700">61.5</text>
 
-        <!-- Boiler 1 pipes -->
-        <rect x="272" y="222" width="8" height="80" fill="#e63946"/><!-- red down to header -->
-        <rect x="308" y="222" width="8" height="94" fill="#3b82f6"/><!-- blue down to header -->
+          <!-- PIPE CONNECTIONS -->
+          <rect x="272" y="222" width="8" height="80" fill="#e63946"/>
+          <rect x="308" y="222" width="8" height="94" fill="#3b82f6"/>
+          <rect x="407" y="222" width="8" height="80" fill="#e63946"/>
+          <rect x="443" y="222" width="8" height="94" fill="#3b82f6"/>
+          <rect x="542" y="222" width="8" height="80" fill="#e63946"/>
+          <rect x="578" y="222" width="8" height="94" fill="#3b82f6"/>
+          <rect x="677" y="222" width="8" height="80" fill="#e63946"/>
+          <rect x="713" y="222" width="8" height="94" fill="#3b82f6"/>
 
-        <!-- Boiler 2 pipes -->
-        <rect x="407" y="222" width="8" height="80" fill="#e63946"/>
-        <rect x="443" y="222" width="8" height="94" fill="#3b82f6"/>
+          <!-- TEMP LABELS BELOW BOILERS -->
+          <text x="264" y="242" class="sch-label" font-size="7">Mandata M1</text>
+          <text x="264" y="253" class="sch-red sch-temp" font-size="10">74.8 °C</text>
+          <text x="264" y="268" class="sch-label" font-size="7">Ritorno M1</text>
+          <text x="264" y="279" class="sch-blue sch-temp" font-size="10">57.9 °C</text>
+          <text x="399" y="242" class="sch-label" font-size="7">Mandata M2</text>
+          <text x="399" y="253" class="sch-red sch-temp" font-size="10">75.2 °C</text>
+          <text x="399" y="268" class="sch-label" font-size="7">Ritorno M2</text>
+          <text x="399" y="279" class="sch-blue sch-temp" font-size="10">58.7 °C</text>
+          <text x="534" y="242" class="sch-label" font-size="7">Mandata M3</text>
+          <text x="534" y="253" class="sch-red sch-temp" font-size="10">60.7 °C</text>
+          <text x="534" y="268" class="sch-label" font-size="7">Ritorno M3</text>
+          <text x="534" y="279" class="sch-blue sch-temp" font-size="10">48.3 °C</text>
+          <text x="669" y="242" class="sch-label" font-size="7">Mandata M4</text>
+          <text x="669" y="253" class="sch-red sch-temp" font-size="10">61.5 °C</text>
+          <text x="669" y="268" class="sch-label" font-size="7">Ritorno M4</text>
+          <text x="669" y="279" class="sch-blue sch-temp" font-size="10">49.1 °C</text>
 
-        <!-- Boiler 3 pipes -->
-        <rect x="542" y="222" width="8" height="80" fill="#e63946"/>
-        <rect x="578" y="222" width="8" height="94" fill="#3b82f6"/>
+          <!-- HEADERS -->
+          <rect x="240" y="298" width="540" height="12" rx="6" fill="#e63946"/>
+          <rect x="240" y="324" width="540" height="12" rx="6" fill="#3b82f6"/>
 
-        <!-- Boiler 4 pipes -->
-        <rect x="677" y="222" width="8" height="80" fill="#e63946"/>
-        <rect x="713" y="222" width="8" height="94" fill="#3b82f6"/>
+          <!-- GAS PIPE -->
+          <rect x="240" y="358" width="520" height="8" rx="4" fill="#eab308"/>
+          <rect x="289" y="344" width="5" height="20" fill="#eab308"/>
+          <rect x="424" y="344" width="5" height="20" fill="#eab308"/>
+          <rect x="559" y="344" width="5" height="20" fill="#eab308"/>
+          <rect x="694" y="344" width="5" height="20" fill="#eab308"/>
 
-        <!-- === TEMPERATURE LABELS BELOW EACH BOILER === -->
-        <!-- Boiler 1 temps -->
-        <text x="264" y="242" class="sch-label" font-size="7">Mandata M1</text>
-        <text x="264" y="253" class="sch-red sch-temp" font-size="10">74.8 °C</text>
-        <text x="264" y="268" class="sch-label" font-size="7">Ritorno M1</text>
-        <text x="264" y="279" class="sch-blue sch-temp" font-size="10">57.9 °C</text>
+          <!-- BASE -->
+          <rect x="225" y="380" width="550" height="16" rx="3" fill="#1e2333" stroke="#2a3042" stroke-width="1"/>
+          <rect x="240" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
+          <rect x="360" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
+          <rect x="480" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
+          <rect x="600" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
+          <rect x="720" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
 
-        <!-- Boiler 2 temps -->
-        <text x="399" y="242" class="sch-label" font-size="7">Mandata M2</text>
-        <text x="399" y="253" class="sch-red sch-temp" font-size="10">75.2 °C</text>
-        <text x="399" y="268" class="sch-label" font-size="7">Ritorno M2</text>
-        <text x="399" y="279" class="sch-blue sch-temp" font-size="10">58.7 °C</text>
+          <!-- PIPES TO HEAT EXCHANGER -->
+          <rect x="775" y="298" width="30" height="12" fill="#e63946"/>
+          <rect x="800" y="170" width="12" height="140" fill="#e63946"/>
+          <rect x="800" y="170" width="40" height="12" fill="#e63946"/>
+          <rect x="775" y="324" width="30" height="12" fill="#3b82f6"/>
+          <rect x="800" y="336" width="12" height="50" fill="#3b82f6"/>
+          <rect x="800" y="376" width="40" height="12" fill="#3b82f6"/>
 
-        <!-- Boiler 3 temps -->
-        <text x="534" y="242" class="sch-label" font-size="7">Mandata M3</text>
-        <text x="534" y="253" class="sch-red sch-temp" font-size="10">60.7 °C</text>
-        <text x="534" y="268" class="sch-label" font-size="7">Ritorno M3</text>
-        <text x="534" y="279" class="sch-blue sch-temp" font-size="10">48.3 °C</text>
+          <!-- HEAT EXCHANGER -->
+          <rect x="838" y="130" width="70" height="280" rx="4" fill="url(#hexG)" stroke="#3a4055" stroke-width="1.5"/>
+          <line x1="850" y1="140" x2="850" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
+          <line x1="858" y1="140" x2="858" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".4"/>
+          <line x1="866" y1="140" x2="866" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
+          <line x1="874" y1="140" x2="874" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".4"/>
+          <line x1="882" y1="140" x2="882" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
+          <line x1="890" y1="140" x2="890" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".4"/>
+          <line x1="898" y1="140" x2="898" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
+          <rect x="833" y="168" width="10" height="16" rx="3" fill="#e63946"/>
+          <rect x="833" y="374" width="10" height="16" rx="3" fill="#3b82f6"/>
 
-        <!-- Boiler 4 temps -->
-        <text x="669" y="242" class="sch-label" font-size="7">Mandata M4</text>
-        <text x="669" y="253" class="sch-red sch-temp" font-size="10">61.5 °C</text>
-        <text x="669" y="268" class="sch-label" font-size="7">Ritorno M4</text>
-        <text x="669" y="279" class="sch-blue sch-temp" font-size="10">49.1 °C</text>
+          <!-- RIGHT LABELS -->
+          <g transform="translate(832,120)">
+            <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Mandata impianto</text>
+            <text x="0" y="14" class="sch-red sch-temp" font-size="13" text-anchor="end">75.0 °C</text>
+          </g>
+          <g transform="translate(832,148)">
+            <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Portata</text>
+            <text x="0" y="12" class="sch-white sch-temp" font-size="11" text-anchor="end">2.45 m³/h</text>
+          </g>
+          <g transform="translate(832,340)">
+            <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Ritorno impianto</text>
+            <text x="0" y="14" class="sch-blue sch-temp" font-size="13" text-anchor="end">56.8 °C</text>
+          </g>
+          <g transform="translate(832,368)">
+            <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Portata</text>
+            <text x="0" y="12" class="sch-white sch-temp" font-size="11" text-anchor="end">2.31 m³/h</text>
+          </g>
 
-        <!-- === HYDRAULIC HEADER PIPES === -->
-        <!-- Supply (red) horizontal header -->
-        <rect x="240" y="298" width="540" height="12" rx="6" fill="#e63946"/>
-        <!-- Return (blue) horizontal header -->
-        <rect x="240" y="324" width="540" height="12" rx="6" fill="#3b82f6"/>
-
-        <!-- === GAS PIPE (yellow) === -->
-        <rect x="240" y="358" width="520" height="8" rx="4" fill="#eab308"/>
-        <rect x="289" y="344" width="5" height="20" fill="#eab308"/>
-        <rect x="424" y="344" width="5" height="20" fill="#eab308"/>
-        <rect x="559" y="344" width="5" height="20" fill="#eab308"/>
-        <rect x="694" y="344" width="5" height="20" fill="#eab308"/>
-
-        <!-- === BASE PLATFORM === -->
-        <rect x="225" y="380" width="550" height="16" rx="3" fill="#1e2333" stroke="#2a3042" stroke-width="1"/>
-        <rect x="240" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
-        <rect x="360" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
-        <rect x="480" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
-        <rect x="600" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
-        <rect x="720" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
-
-        <!-- === PIPES TO HEAT EXCHANGER === -->
-        <!-- Red supply pipe going right -->
-        <rect x="775" y="298" width="30" height="12" fill="#e63946"/>
-        <rect x="800" y="170" width="12" height="140" fill="#e63946"/>
-        <rect x="800" y="170" width="40" height="12" fill="#e63946"/>
-
-        <!-- Blue return pipe going right -->
-        <rect x="775" y="324" width="30" height="12" fill="#3b82f6"/>
-        <rect x="800" y="336" width="12" height="50" fill="#3b82f6"/>
-        <rect x="800" y="376" width="40" height="12" fill="#3b82f6"/>
-
-        <!-- === PLATE HEAT EXCHANGER === -->
-        <rect x="838" y="130" width="70" height="280" rx="4" fill="url(#hexG)" stroke="#3a4055" stroke-width="1.5"/>
-        <line x1="850" y1="140" x2="850" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
-        <line x1="858" y1="140" x2="858" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".4"/>
-        <line x1="866" y1="140" x2="866" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
-        <line x1="874" y1="140" x2="874" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".4"/>
-        <line x1="882" y1="140" x2="882" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
-        <line x1="890" y1="140" x2="890" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".4"/>
-        <line x1="898" y1="140" x2="898" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
-
-        <!-- HEX pipe connections -->
-        <rect x="833" y="168" width="10" height="16" rx="3" fill="#e63946"/>
-        <rect x="833" y="374" width="10" height="16" rx="3" fill="#3b82f6"/>
-
-        <!-- === RIGHT SIDE LABELS === -->
-        <g transform="translate(832,120)">
-          <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Mandata impianto</text>
-          <text x="0" y="14" class="sch-red sch-temp" font-size="13" text-anchor="end">75.0 °C</text>
-        </g>
-        <g transform="translate(832,148)">
-          <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Portata</text>
-          <text x="0" y="12" class="sch-white sch-temp" font-size="11" text-anchor="end">2.45 m³/h</text>
-        </g>
-        <g transform="translate(832,340)">
-          <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Ritorno impianto</text>
-          <text x="0" y="14" class="sch-blue sch-temp" font-size="13" text-anchor="end">56.8 °C</text>
-        </g>
-        <g transform="translate(832,368)">
-          <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Portata</text>
-          <text x="0" y="12" class="sch-white sch-temp" font-size="11" text-anchor="end">2.31 m³/h</text>
-        </g>
-
-        <!-- Valve symbols -->
-        <circle cx="790" cy="304" r="6" fill="#1a2236" stroke="#6b7a99" stroke-width="1"/>
-        <line x1="787" y1="304" x2="793" y2="304" stroke="#6b7a99" stroke-width="1.5"/>
-        <circle cx="790" cy="330" r="6" fill="#1a2236" stroke="#6b7a99" stroke-width="1"/>
-        <line x1="787" y1="330" x2="793" y2="330" stroke="#6b7a99" stroke-width="1.5"/>
-
-      </svg>
-    </div>
-
-    <!-- BOTTOM CARDS -->
-    <div class="bottom-cards">
-      <!-- Card 1: Impostazioni -->
-      <div class="bcard">
-        <div class="bcard-header">
-          <div class="bicon" style="background:#e6394622;color:#e63946;">&#9881;</div>
-          <h3>IMPOSTAZIONI</h3>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label"><svg fill="none" stroke="#e63946" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="12" y1="10" x2="12" y2="16"/><line x1="16" y1="6" x2="16" y2="16"/></svg> CH (mandata)</span>
-          <span class="br-val">75.0 <small>°C</small></span>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label"><svg fill="none" stroke="#e63946" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> ZONA 1</span>
-          <span class="br-val">20.0 <small>°C</small></span>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label"><svg fill="none" stroke="#e63946" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> ZONA 2</span>
-          <span class="br-val">18.0 <small>°C</small></span>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label"><svg fill="none" stroke="#e63946" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v6m0 0a4 4 0 104 4"/><path d="M6 12h2"/></svg> SANITARIO (ACS)</span>
-          <span class="br-val">50.0 <small>°C</small></span>
-        </div>
+          <!-- Valves -->
+          <circle cx="790" cy="304" r="6" fill="#1a2236" stroke="#6b7a99" stroke-width="1"/>
+          <line x1="787" y1="304" x2="793" y2="304" stroke="#6b7a99" stroke-width="1.5"/>
+          <circle cx="790" cy="330" r="6" fill="#1a2236" stroke="#6b7a99" stroke-width="1"/>
+          <line x1="787" y1="330" x2="793" y2="330" stroke="#6b7a99" stroke-width="1.5"/>
+        </svg>
       </div>
 
-      <!-- Card 2: Stato Generatori -->
-      <div class="bcard">
-        <div class="bcard-header">
-          <div class="bicon" style="background:#2ecc7122;color:#2ecc71;">&#9889;</div>
-          <h3>STATO DEI GENERATORI</h3>
+      <!-- Bottom cards -->
+      <div class="bottom-cards">
+        <div class="bcard">
+          <div class="bcard-header">
+            <div class="bicon" style="background:#e6394622;color:#e63946;">&#9881;</div>
+            <h3>IMPOSTAZIONI</h3>
+          </div>
+          <div class="bcard-row"><span class="br-label"><svg fill="none" stroke="#e63946" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="12" y1="10" x2="12" y2="16"/><line x1="16" y1="6" x2="16" y2="16"/></svg> CH (mandata)</span><span class="br-val">75.0 <small>°C</small></span></div>
+          <div class="bcard-row"><span class="br-label"><svg fill="none" stroke="#e63946" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> ZONA 1</span><span class="br-val">20.0 <small>°C</small></span></div>
+          <div class="bcard-row"><span class="br-label"><svg fill="none" stroke="#e63946" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> ZONA 2</span><span class="br-val">18.0 <small>°C</small></span></div>
+          <div class="bcard-row"><span class="br-label"><svg fill="none" stroke="#e63946" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v6m0 0a4 4 0 104 4"/><path d="M6 12h2"/></svg> SANITARIO (ACS)</span><span class="br-val">50.0 <small>°C</small></span></div>
         </div>
-        <div class="bcard-row">
-          <span class="br-label"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:2px solid #6b7a99;font-size:11px;font-weight:700;color:#fff;">1</span></span>
-          <span class="br-val"><span class="status-on">ON</span> &nbsp; CH</span>
+        <div class="bcard">
+          <div class="bcard-header">
+            <div class="bicon" style="background:#2ecc7122;color:#2ecc71;">&#9889;</div>
+            <h3>STATO DEI GENERATORI</h3>
+          </div>
+          <div class="bcard-row"><span class="br-label"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:2px solid #6b7a99;font-size:11px;font-weight:700;color:#fff;">1</span></span><span class="br-val"><span class="status-on">ON</span> &nbsp; CH</span></div>
+          <div class="bcard-row"><span class="br-label"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:2px solid #6b7a99;font-size:11px;font-weight:700;color:#fff;">2</span></span><span class="br-val"><span class="status-on">ON</span> &nbsp; CH</span></div>
+          <div class="bcard-row"><span class="br-label"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:2px solid #6b7a99;font-size:11px;font-weight:700;color:#fff;">3</span></span><span class="br-val"><span class="status-on">ON</span> &nbsp; CH</span></div>
+          <div class="bcard-row"><span class="br-label"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:2px solid #6b7a99;font-size:11px;font-weight:700;color:#fff;">4</span></span><span class="br-val"><span class="status-standby">STANDBY</span> &nbsp; -</span></div>
         </div>
-        <div class="bcard-row">
-          <span class="br-label"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:2px solid #6b7a99;font-size:11px;font-weight:700;color:#fff;">2</span></span>
-          <span class="br-val"><span class="status-on">ON</span> &nbsp; CH</span>
+        <div class="bcard">
+          <div class="bcard-header">
+            <div class="bicon" style="background:#3b82f622;color:#3b82f6;">&#128167;</div>
+            <h3>PARAMETRI ACQUA</h3>
+          </div>
+          <div class="bcard-row"><span class="br-label">Portata mandata</span><span class="br-val">2.45 <small>m&sup3;/h</small></span></div>
+          <div class="bcard-row"><span class="br-label">Portata ritorno</span><span class="br-val">2.31 <small>m&sup3;/h</small></span></div>
+          <div class="bcard-row"><span class="br-label">&Delta;T impianto</span><span class="br-val">18.2 <small>°C</small></span></div>
+          <div class="bcard-row"><span class="br-label">Pressione impianto</span><span class="br-val">1.6 <small>bar</small></span></div>
         </div>
-        <div class="bcard-row">
-          <span class="br-label"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:2px solid #6b7a99;font-size:11px;font-weight:700;color:#fff;">3</span></span>
-          <span class="br-val"><span class="status-on">ON</span> &nbsp; CH</span>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:2px solid #6b7a99;font-size:11px;font-weight:700;color:#fff;">4</span></span>
-          <span class="br-val"><span class="status-standby">STANDBY</span> &nbsp; -</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Parametri Acqua -->
-      <div class="bcard">
-        <div class="bcard-header">
-          <div class="bicon" style="background:#3b82f622;color:#3b82f6;">&#128167;</div>
-          <h3>PARAMETRI ACQUA</h3>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label">Portata mandata</span>
-          <span class="br-val">2.45 <small>m&sup3;/h</small></span>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label">Portata ritorno</span>
-          <span class="br-val">2.31 <small>m&sup3;/h</small></span>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label">&Delta;T impianto</span>
-          <span class="br-val">18.2 <small>°C</small></span>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label">Pressione impianto</span>
-          <span class="br-val">1.6 <small>bar</small></span>
-        </div>
-      </div>
-
-      <!-- Card 4: Temperature -->
-      <div class="bcard">
-        <div class="bcard-header">
-          <div class="bicon" style="background:#e6394622;color:#e63946;">&#127777;&#65039;</div>
-          <h3>TEMPERATURE</h3>
-        </div>
-        <div class="bcard-row">
-          <span class="br-label">Temperatura esterna</span>
-          <span class="br-val">12.4 <small>°C</small> &#9729;</span>
-        </div>
-        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #1a2236;">
-          <div style="font-size:10px;color:#6b7a99;">Energia termica prodotta oggi</div>
-          <div class="big-val">1,284 <small>kWh</small></div>
+        <div class="bcard">
+          <div class="bcard-header">
+            <div class="bicon" style="background:#e6394622;color:#e63946;">&#127777;&#65039;</div>
+            <h3>TEMPERATURE</h3>
+          </div>
+          <div class="bcard-row"><span class="br-label">Temperatura esterna</span><span class="br-val">12.4 <small>°C</small> &#9729;</span></div>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px solid #1a2236;">
+            <div style="font-size:10px;color:#6b7a99;">Energia termica prodotta oggi</div>
+            <div class="big-val">1,284 <small>kWh</small></div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- ══════ ERRORI PAGE ══════ -->
+    <div class="page" id="page-errori">
+      <div class="errori-summary">
+        <div class="err-stat-card red">
+          <div class="err-stat-num red">3</div>
+          <div class="err-stat-label"><strong>Errori Attivi</strong>Richiedono intervento immediato</div>
+        </div>
+        <div class="err-stat-card orange">
+          <div class="err-stat-num orange">1</div>
+          <div class="err-stat-label"><strong>In Corso</strong>Monitoraggio attivo</div>
+        </div>
+        <div class="err-stat-card green">
+          <div class="err-stat-num green">11</div>
+          <div class="err-stat-label"><strong>Risolti</strong>Ultimi 90 giorni</div>
+        </div>
+      </div>
+      <div class="err-table-wrap">
+        <div class="err-table-header">
+          <h2>&#9888;&#65039; Registro Errori</h2>
+          <span class="err-count">15 eventi totali</span>
+        </div>
+        <div class="err-table-scroll">
+          <table class="err-table">
+            <thead>
+              <tr>
+                <th style="width:130px;">Codice Errore</th>
+                <th>Descrizione</th>
+                <th style="width:140px;">Stato Errore</th>
+                <th style="width:170px;">Data Errore</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="err-code"><span class="err-dot attivo"></span>E001</td><td>Blocco fiamma — Modulo M1</td><td><span class="err-badge attivo">Attivo</span></td><td>26/06/15 14:22:08</td></tr>
+              <tr><td class="err-code"><span class="err-dot attivo"></span>E005</td><td>Blocco ventilatore — Modulo M3</td><td><span class="err-badge attivo">Attivo</span></td><td>26/06/15 11:45:33</td></tr>
+              <tr><td class="err-code"><span class="err-dot incorso"></span>W001</td><td>Pressione acqua bassa — Impianto (0.8 bar)</td><td><span class="err-badge incorso">In Corso</span></td><td>26/06/14 09:32:17</td></tr>
+              <tr><td class="err-code"><span class="err-dot attivo"></span>E008</td><td>Sovratemperatura fumi — Modulo M2 (residuo)</td><td><span class="err-badge attivo">Attivo</span></td><td>26/06/13 18:05:44</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>E002</td><td>Sovratemperatura mandata — Modulo M1</td><td><span class="err-badge risolto">Risolto</span></td><td>26/06/10 07:14:52</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>W002</td><td>Temperatura fumi elevata — Modulo M4</td><td><span class="err-badge risolto">Risolto</span></td><td>26/06/05 22:10:03</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>E003</td><td>Sonda mandata guasta — Modulo M2</td><td><span class="err-badge risolto">Risolto</span></td><td>26/05/28 16:33:21</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>E004</td><td>Anomalia valvola gas — Modulo M1</td><td><span class="err-badge risolto">Risolto</span></td><td>26/05/20 10:48:55</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>W003</td><td>Errore comunicazione scheda — Modulo M3</td><td><span class="err-badge risolto">Risolto</span></td><td>26/05/15 08:22:10</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>W004</td><td>Antigelo attivo — Sistema protezione avviato</td><td><span class="err-badge risolto">Risolto</span></td><td>26/04/12 03:15:47</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>E006</td><td>Sonda ritorno guasta — Modulo M4</td><td><span class="err-badge risolto">Risolto</span></td><td>26/04/02 14:58:30</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>E007</td><td>Errore accensione — Modulo M2 (tentativo 3/3)</td><td><span class="err-badge risolto">Risolto</span></td><td>26/03/25 19:44:12</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>W005</td><td>Manutenzione programmata — Scadenza intervallo ore</td><td><span class="err-badge risolto">Risolto</span></td><td>26/03/18 09:00:00</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>W006</td><td>Pressione gas bassa — Rete alimentazione</td><td><span class="err-badge risolto">Risolto</span></td><td>26/03/05 21:37:28</td></tr>
+              <tr><td class="err-code"><span class="err-dot risolto"></span>W007</td><td>Portata insufficiente — Circuito primario</td><td><span class="err-badge risolto">Risolto</span></td><td>25/12/14 11:22:05</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ PLACEHOLDER PAGES ══════ -->
+    <div class="page" id="page-impostazioni">
+      <div class="placeholder-page">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        <h2>IMPOSTAZIONI</h2>
+        <p>Pagina in fase di sviluppo</p>
+      </div>
+    </div>
+    <div class="page" id="page-lingua">
+      <div class="placeholder-page">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <h2>LINGUA</h2>
+        <p>Pagina in fase di sviluppo</p>
+      </div>
+    </div>
+    <div class="page" id="page-manutenzione">
+      <div class="placeholder-page">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <h2>MANUTENZIONE</h2>
+        <p>Pagina in fase di sviluppo</p>
+      </div>
+    </div>
+    <div class="page" id="page-programmazione">
+      <div class="placeholder-page">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <h2>PROGRAMMAZIONE ORARIA</h2>
+        <p>Pagina in fase di sviluppo</p>
+      </div>
+    </div>
+    <div class="page" id="page-grafici">
+      <div class="placeholder-page">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <h2>GRAFICI</h2>
+        <p>Pagina in fase di sviluppo</p>
+      </div>
+    </div>
+    <div class="page" id="page-service">
+      <div class="placeholder-page">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M12 2a2.5 2.5 0 00-2 1"/><path d="M3 18v1a2 2 0 002 2h14a2 2 0 002-2v-1"/></svg>
+        <h2>SERVICE</h2>
+        <p>Pagina in fase di sviluppo</p>
+      </div>
+    </div>
+
   </div>
 </div>
+
+<script>
+const pageTitles = {
+  home: 'DASHBOARD',
+  impostazioni: 'IMPOSTAZIONI',
+  lingua: 'LINGUA',
+  manutenzione: 'MANUTENZIONE',
+  errori: 'ERRORI',
+  programmazione: 'PROGRAMMAZIONE ORARIA',
+  grafici: 'GRAFICI',
+  service: 'SERVICE'
+};
+
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pageTitleText').textContent = pageTitles[id] || id.toUpperCase();
+}
+
+// Live clock
+function updateClock() {
+  const now = new Date();
+  const d = String(now.getDate()).padStart(2,'0');
+  const m = String(now.getMonth()+1).padStart(2,'0');
+  const y = now.getFullYear();
+  const hh = String(now.getHours()).padStart(2,'0');
+  const mm = String(now.getMinutes()).padStart(2,'0');
+  document.getElementById('dateDisplay').textContent = d+'/'+m+'/'+y;
+  document.getElementById('timeDisplay').textContent = hh+':'+mm;
+}
+updateClock();
+setInterval(updateClock, 10000);
+</script>
 
 </body>
 </html>
