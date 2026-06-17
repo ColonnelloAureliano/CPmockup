@@ -33,8 +33,8 @@ body{font-family:'Roboto',sans-serif;background:#0a0f1e;color:#c8cdd8;display:fl
 .page{display:none;flex-direction:column;gap:12px;flex:1;animation:fadeIn .3s ease;}
 .page.active{display:flex;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.schematic-area{flex:1;min-height:420px;background:#0d1220;border:1px solid #1a2236;border-radius:10px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.schematic-area svg{width:100%;height:100%;max-height:500px;}
+.schematic-area{flex:1;min-height:440px;background:#0d1220;border:1px solid #1a2236;border-radius:10px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.schematic-area svg{width:100%;height:100%;max-height:520px;}
 .bottom-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;flex-shrink:0;}
 .bcard{background:#111827;border:1px solid #1a2236;border-radius:10px;padding:16px 18px;}
 .bcard-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
@@ -52,7 +52,7 @@ body{font-family:'Roboto',sans-serif;background:#0a0f1e;color:#c8cdd8;display:fl
 .bcard .big-val small{font-size:14px;color:#6b7a99;font-weight:400;}
 .sch-temp{font-family:'Roboto',sans-serif;font-weight:700;}
 .sch-label{font-family:'Roboto',sans-serif;fill:#6b7a99;}
-.sch-red{fill:#e63946;}.sch-blue{fill:#3b82f6;}.sch-white{fill:#fff;}
+.sch-red{fill:#e63946;}.sch-blue{fill:#3b82f6;}.sch-white{fill:#fff;}.sch-gas{fill:#eab308;}
 /* Errori */
 .errori-summary{display:flex;gap:16px;flex-shrink:0;}
 .err-stat-card{background:#111827;border:1px solid #1a2236;border-radius:10px;padding:18px 24px;display:flex;align-items:center;gap:16px;}
@@ -124,13 +124,17 @@ table.err-table .err-code{font-weight:700;color:#fff;font-size:13px;letter-spaci
 .prog-footer{display:flex;gap:16px;align-items:center;padding-top:8px;flex-shrink:0;flex-wrap:wrap;}
 .prog-footer span{display:flex;align-items:center;gap:6px;font-size:11px;color:#6b7a99;}
 .prog-footer .pf-block{width:16px;height:12px;border-radius:2px;}
-/* Impostazioni grid */
+/* Impostazioni grid with steppers */
 .set-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;flex:1;align-content:start;}
-.set-card{background:#111827;border:1px solid #1a2236;border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;}
-.set-card .sc-label{font-size:10px;color:#6b7a99;text-transform:uppercase;letter-spacing:1px;font-weight:600;}
-.set-card .sc-val-row{display:flex;align-items:baseline;gap:6px;}
-.set-card .sc-val{font-size:24px;font-weight:900;color:#fff;background:#0d1220;border:1px solid #1a2236;border-radius:6px;padding:4px 12px;min-width:70px;text-align:center;}
-.set-card .sc-unit{font-size:12px;color:#6b7a99;font-weight:500;}
+.set-card{background:#111827;border:1px solid #1a2236;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;}
+.set-card .sc-label{font-size:10px;color:#6b7a99;text-transform:uppercase;letter-spacing:1px;font-weight:600;line-height:1.3;min-height:26px;}
+.sc-stepper{display:flex;align-items:center;gap:8px;}
+.sc-btn{width:30px;height:30px;background:#0d1220;border:1px solid #1a2236;border-radius:6px;color:#8892a8;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;}
+.sc-btn:hover{border-color:#e63946;color:#e63946;background:#1a223655;}
+.sc-btn:active{transform:scale(0.92);}
+.sc-btn svg{width:14px;height:14px;}
+.sc-val{flex:1;text-align:center;font-size:22px;font-weight:900;color:#fff;font-variant-numeric:tabular-nums;}
+.sc-unit{font-size:11px;color:#6b7a99;font-weight:500;min-width:24px;}
 /* Lingua */
 .lingua-wrap{max-width:500px;margin:40px auto;width:100%;display:flex;flex-direction:column;gap:20px;}
 .lingua-card{background:#111827;border:1px solid #1a2236;border-radius:12px;padding:28px 32px;}
@@ -201,6 +205,7 @@ table.err-table .err-code{font-weight:700;color:#fff;font-size:13px;letter-spaci
     </div>
   </div>
   <div class="content">
+
     <!-- HOME -->
     <div class="page active" id="page-home">
       <div class="schematic-area">
@@ -264,15 +269,29 @@ table.err-table .err-code{font-weight:700;color:#fff;font-size:13px;letter-spaci
           <text x="705" y="271" class="sch-label" font-size="7">Ritorno M4</text><text x="705" y="282" class="sch-blue sch-temp" font-size="10">49.1 °C</text>
           <rect x="240" y="298" width="540" height="12" rx="6" fill="#e63946"/>
           <rect x="240" y="324" width="540" height="12" rx="6" fill="#3b82f6"/>
+          <!-- Gas pipe (yellow) -->
           <rect x="240" y="358" width="520" height="8" rx="4" fill="#eab308"/>
           <rect x="289" y="344" width="5" height="20" fill="#eab308"/><rect x="424" y="344" width="5" height="20" fill="#eab308"/>
           <rect x="559" y="344" width="5" height="20" fill="#eab308"/><rect x="694" y="344" width="5" height="20" fill="#eab308"/>
-          <rect x="225" y="380" width="550" height="16" rx="3" fill="#1e2333" stroke="#2a3042" stroke-width="1"/>
-          <rect x="240" y="396" width="20" height="14" rx="3" fill="#2a3042"/><rect x="360" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
-          <rect x="480" y="396" width="20" height="14" rx="3" fill="#2a3042"/><rect x="600" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
-          <rect x="720" y="396" width="20" height="14" rx="3" fill="#2a3042"/>
+          <!-- Gas info labels (NEW) -->
+          <rect x="248" y="378" width="100" height="28" rx="3" fill="#000" opacity="0.6"/>
+          <text x="253" y="389" class="sch-label" font-size="7.5">Temperatura gas</text>
+          <text x="253" y="401" class="sch-gas sch-temp" font-size="11">15.2 °C</text>
+          <rect x="430" y="378" width="100" height="28" rx="3" fill="#000" opacity="0.6"/>
+          <text x="435" y="389" class="sch-label" font-size="7.5">Pressione gas</text>
+          <text x="435" y="401" class="sch-gas sch-temp" font-size="11">20 mbar</text>
+          <rect x="610" y="378" width="100" height="28" rx="3" fill="#000" opacity="0.6"/>
+          <text x="615" y="389" class="sch-label" font-size="7.5">Portata gas</text>
+          <text x="615" y="401" class="sch-gas sch-temp" font-size="11">8.5 m³/h</text>
+          <!-- Base platform shifted down -->
+          <rect x="225" y="420" width="550" height="14" rx="3" fill="#1e2333" stroke="#2a3042" stroke-width="1"/>
+          <rect x="240" y="434" width="20" height="12" rx="3" fill="#2a3042"/><rect x="360" y="434" width="20" height="12" rx="3" fill="#2a3042"/>
+          <rect x="480" y="434" width="20" height="12" rx="3" fill="#2a3042"/><rect x="600" y="434" width="20" height="12" rx="3" fill="#2a3042"/>
+          <rect x="720" y="434" width="20" height="12" rx="3" fill="#2a3042"/>
+          <!-- HEX pipes -->
           <rect x="775" y="298" width="30" height="12" fill="#e63946"/><rect x="800" y="170" width="12" height="140" fill="#e63946"/><rect x="800" y="170" width="40" height="12" fill="#e63946"/>
-          <rect x="775" y="324" width="30" height="12" fill="#3b82f6"/><rect x="800" y="336" width="12" height="50" fill="#3b82f6"/><rect x="800" y="376" width="40" height="12" fill="#3b82f6"/>
+          <rect x="775" y="324" width="30" height="12" fill="#3b82f6"/><rect x="800" y="336" width="12" height="60" fill="#3b82f6"/><rect x="800" y="386" width="40" height="12" fill="#3b82f6"/>
+          <!-- HEX -->
           <rect x="838" y="130" width="70" height="280" rx="4" fill="url(#hexG)" stroke="#3a4055" stroke-width="1.5"/>
           <line x1="850" y1="140" x2="850" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
           <line x1="858" y1="140" x2="858" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".4"/>
@@ -281,19 +300,17 @@ table.err-table .err-code{font-weight:700;color:#fff;font-size:13px;letter-spaci
           <line x1="882" y1="140" x2="882" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
           <line x1="890" y1="140" x2="890" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".4"/>
           <line x1="898" y1="140" x2="898" y2="400" stroke="#3b82f6" stroke-width="1.5" opacity=".5"/>
-          <rect x="833" y="168" width="10" height="16" rx="3" fill="#e63946"/><rect x="833" y="374" width="10" height="16" rx="3" fill="#3b82f6"/>
+          <rect x="833" y="168" width="10" height="16" rx="3" fill="#e63946"/><rect x="833" y="384" width="10" height="16" rx="3" fill="#3b82f6"/>
+          <!-- Right labels: Mandata impianto (with portata), Ritorno impianto WITHOUT portata -->
           <g transform="translate(832,120)"><rect x="-90" y="-10" width="94" height="30" rx="3" fill="#000" opacity="0.6"/>
             <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Mandata impianto</text>
             <text x="0" y="14" class="sch-red sch-temp" font-size="13" text-anchor="end">75.0 °C</text></g>
           <g transform="translate(832,148)"><rect x="-70" y="-10" width="74" height="28" rx="3" fill="#000" opacity="0.6"/>
             <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Portata</text>
-            <text x="0" y="12" class="sch-white sch-temp" font-size="11" text-anchor="end">2.45 m&#179;/h</text></g>
-          <g transform="translate(832,340)"><rect x="-90" y="-10" width="94" height="30" rx="3" fill="#000" opacity="0.6"/>
+            <text x="0" y="12" class="sch-white sch-temp" font-size="11" text-anchor="end">2.45 m³/h</text></g>
+          <g transform="translate(832,360)"><rect x="-90" y="-10" width="94" height="30" rx="3" fill="#000" opacity="0.6"/>
             <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Ritorno impianto</text>
             <text x="0" y="14" class="sch-blue sch-temp" font-size="13" text-anchor="end">56.8 °C</text></g>
-          <g transform="translate(832,368)"><rect x="-70" y="-10" width="74" height="28" rx="3" fill="#000" opacity="0.6"/>
-            <text x="0" y="0" class="sch-label" font-size="7.5" text-anchor="end">Portata</text>
-            <text x="0" y="12" class="sch-white sch-temp" font-size="11" text-anchor="end">2.31 m&#179;/h</text></g>
           <circle cx="790" cy="304" r="6" fill="#1a2236" stroke="#6b7a99" stroke-width="1"/><line x1="787" y1="304" x2="793" y2="304" stroke="#6b7a99" stroke-width="1.5"/>
           <circle cx="790" cy="330" r="6" fill="#1a2236" stroke="#6b7a99" stroke-width="1"/><line x1="787" y1="330" x2="793" y2="330" stroke="#6b7a99" stroke-width="1.5"/>
         </svg>
@@ -323,6 +340,7 @@ table.err-table .err-code{font-weight:700;color:#fff;font-size:13px;letter-spaci
         </div>
       </div>
     </div>
+
     <!-- ERRORI -->
     <div class="page" id="page-errori">
       <div class="errori-summary">
@@ -363,9 +381,7 @@ table.err-table .err-code{font-weight:700;color:#fff;font-size:13px;letter-spaci
           <h2><span class="live-dot"></span> Andamento Temperature &mdash; Tempo Reale</h2>
           <span style="font-size:12px;color:#6b7a99;">Aggiornamento ogni 1s</span>
         </div>
-        <div class="chart-canvas-wrap">
-          <canvas id="tempChart"></canvas>
-        </div>
+        <div class="chart-canvas-wrap"><canvas id="tempChart"></canvas></div>
         <div class="chart-legend-bar">
           <span><span class="leg-line" style="background:#e63946;"></span> Mandata Impianto</span>
           <span><span class="leg-line" style="background:#3b82f6;"></span> Ritorno Impianto</span>
@@ -386,9 +402,9 @@ table.err-table .err-code{font-weight:700;color:#fff;font-size:13px;letter-spaci
         <div class="prog-grid-wrap">
           <div class="prog-grid" id="progGrid"></div>
           <div class="prog-footer">
-            <span><span class="pf-block" style="background:rgba(230,57,70,0.85);"></span> 70°C</span>
-            <span><span class="pf-block" style="background:rgba(230,57,70,0.55);"></span> 55°C</span>
-            <span><span class="pf-block" style="background:rgba(230,57,70,0.35);"></span> 50°C</span>
+            <span><span class="pf-block" style="background:rgba(230,57,70,0.85);"></span> 70&deg;C</span>
+            <span><span class="pf-block" style="background:rgba(230,57,70,0.55);"></span> 55&deg;C</span>
+            <span><span class="pf-block" style="background:rgba(230,57,70,0.35);"></span> 50&deg;C</span>
             <span><span class="pf-block" style="background:#0d1220;"></span> Spento</span>
             <span style="margin-left:auto;color:#4a5670;">Modalit&agrave; visualizzazione &mdash; non modificabile dal mockup</span>
           </div>
@@ -419,37 +435,133 @@ table.err-table .err-code{font-weight:700;color:#fff;font-size:13px;letter-spaci
       </div>
     </div>
 
-    <!-- IMPOSTAZIONI (20 params, 4x5 grid) -->
+    <!-- IMPOSTAZIONI 4x5 grid with steppers -->
     <div class="page" id="page-impostazioni">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;flex-shrink:0;">
         <h2 style="font-size:16px;color:#fff;letter-spacing:1px;">&#9881; Parametri di Configurazione</h2>
         <span style="font-size:11px;color:#4a5670;">20 parametri &mdash; Condexa PRO CP 135</span>
       </div>
       <div class="set-grid">
-        <div class="set-card"><div class="sc-label">CH Setpoint</div><div class="sc-val-row"><span class="sc-val">75</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">DHW Setpoint</div><div class="sc-val-row"><span class="sc-val">50</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">Zona 1 Setpoint</div><div class="sc-val-row"><span class="sc-val">20</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">Zona 2 Setpoint</div><div class="sc-val-row"><span class="sc-val">18</span><span class="sc-unit">&deg;C</span></div></div>
-
-        <div class="set-card"><div class="sc-label">Isteresi CH</div><div class="sc-val-row"><span class="sc-val">5</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">Isteresi DHW</div><div class="sc-val-row"><span class="sc-val">3</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">Isteresi Zona 1</div><div class="sc-val-row"><span class="sc-val">1.0</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">Isteresi Zona 2</div><div class="sc-val-row"><span class="sc-val">1.0</span><span class="sc-unit">&deg;C</span></div></div>
-
-        <div class="set-card"><div class="sc-label">Potenza Max CH</div><div class="sc-val-row"><span class="sc-val">100</span><span class="sc-unit">%</span></div></div>
-        <div class="set-card"><div class="sc-label">Potenza Min CH</div><div class="sc-val-row"><span class="sc-val">20</span><span class="sc-unit">%</span></div></div>
-        <div class="set-card"><div class="sc-label">Potenza Max DHW</div><div class="sc-val-row"><span class="sc-val">100</span><span class="sc-unit">%</span></div></div>
-        <div class="set-card"><div class="sc-label">Potenza Min DHW</div><div class="sc-val-row"><span class="sc-val">30</span><span class="sc-unit">%</span></div></div>
-
-        <div class="set-card"><div class="sc-label">T Max Mandata</div><div class="sc-val-row"><span class="sc-val">85</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">T Max Fumi</div><div class="sc-val-row"><span class="sc-val">120</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">Tempo Postcirc. Pompa</div><div class="sc-val-row"><span class="sc-val">180</span><span class="sc-unit">s</span></div></div>
-        <div class="set-card"><div class="sc-label">Ritardo Accensione</div><div class="sc-val-row"><span class="sc-val">10</span><span class="sc-unit">s</span></div></div>
-
-        <div class="set-card"><div class="sc-label">Offset Curva Climatica</div><div class="sc-val-row"><span class="sc-val">+2</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">Pendenza Curva Clim.</div><div class="sc-val-row"><span class="sc-val">1.4</span><span class="sc-unit"></span></div></div>
-        <div class="set-card"><div class="sc-label">Soglia Antigelo</div><div class="sc-val-row"><span class="sc-val">5</span><span class="sc-unit">&deg;C</span></div></div>
-        <div class="set-card"><div class="sc-label">Tempo Antilegionella</div><div class="sc-val-row"><span class="sc-val">60</span><span class="sc-unit">min</span></div></div>
+        <div class="set-card"><div class="sc-label">CH Setpoint</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">75</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">DHW Setpoint</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">50</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Zona 1 Setpoint</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">20</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Zona 2 Setpoint</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">18</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Isteresi CH</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">5</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Isteresi DHW</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">3</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Isteresi Zona 1</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="0.1" data-dec="1" data-sign="">1.0</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Isteresi Zona 2</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="0.1" data-dec="1" data-sign="">1.0</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Potenza Max CH</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">100</span>
+<span class="sc-unit">%</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Potenza Min CH</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">20</span>
+<span class="sc-unit">%</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Potenza Max DHW</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">100</span>
+<span class="sc-unit">%</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Potenza Min DHW</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">30</span>
+<span class="sc-unit">%</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">T Max Mandata</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">85</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">T Max Fumi</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">120</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Tempo Postcirc. Pompa</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">180</span>
+<span class="sc-unit">s</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Ritardo Accensione</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">10</span>
+<span class="sc-unit">s</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Offset Curva Climatica</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="+">+2</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Pendenza Curva Clim.</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="0.1" data-dec="1" data-sign="">1.4</span>
+<span class="sc-unit"></span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Soglia Antigelo</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">5</span>
+<span class="sc-unit">&deg;C</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
+        <div class="set-card"><div class="sc-label">Tempo Antilegionella</div><div class="sc-stepper">
+<button class="sc-btn" onclick="adj(this,-1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+<span class="sc-val" data-step="1" data-dec="0" data-sign="">60</span>
+<span class="sc-unit">min</span>
+<button class="sc-btn" onclick="adj(this,1)"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+</div></div>
       </div>
     </div>
 
@@ -471,7 +583,7 @@ table.err-table .err-code{font-weight:700;color:#fff;font-size:13px;letter-spaci
       </div>
     </div>
 
-    <!-- MANUTENZIONE placeholder -->
+    <!-- MANUTENZIONE -->
     <div class="page" id="page-manutenzione"><div class="placeholder-page">
       <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
       <h2>MANUTENZIONE</h2><p>Pagina in fase di sviluppo</p>
@@ -498,6 +610,20 @@ function updateClock(){
 }
 updateClock();setInterval(updateClock,10000);
 
+// === STEPPER (Impostazioni) ===
+function adj(btn,dir){
+  const stepper=btn.parentElement;
+  const valEl=stepper.querySelector('.sc-val');
+  const step=parseFloat(valEl.dataset.step);
+  const dec=parseInt(valEl.dataset.dec);
+  const sign=valEl.dataset.sign||'';
+  let cur=parseFloat(valEl.textContent.replace('+',''));
+  cur=cur+dir*step;
+  let txt=cur.toFixed(dec);
+  if(sign==='+'&&cur>0)txt='+'+txt;
+  valEl.textContent=txt;
+}
+
 // === CHART (1s tick) ===
 const maxPts=61;
 let dataM=[],dataR=[],dataF=[],chartT=0;
@@ -510,7 +636,6 @@ function genPoint(){
   chartT++;
 }
 for(let i=0;i<maxPts;i++)genPoint();
-
 function drawChart(){
   const canvas=document.getElementById('tempChart');
   const wrap=canvas.parentElement;
@@ -523,21 +648,18 @@ function drawChart(){
   const pad={t:28,r:20,b:32,l:52};
   const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
   ctx.fillStyle='#111827';ctx.fillRect(0,0,W,H);
-  // Grid
   ctx.strokeStyle='#1a2236';ctx.lineWidth=1;
   for(let v=0;v<=100;v+=10){
     const y=pad.t+ch-(v/100)*ch;
     ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(W-pad.r,y);ctx.stroke();
     if(v%20===0){ctx.fillStyle='#4a5670';ctx.font='10px Roboto';ctx.textAlign='right';ctx.fillText(v+'°C',pad.l-6,y+3);}
   }
-  // X axis labels: -60s to 0s
   ctx.fillStyle='#4a5670';ctx.font='9px Roboto';ctx.textAlign='center';
   for(let s=60;s>=0;s-=10){
     const i=maxPts-1-s;
     const x=pad.l+(i/(maxPts-1))*cw;
     ctx.fillText(s===0?'0s':'-'+s+'s',x,H-pad.b+16);
   }
-  // Lines
   function drawLine(data,color,w){
     ctx.strokeStyle=color;ctx.lineWidth=w||2;ctx.lineJoin='round';ctx.beginPath();
     for(let i=0;i<data.length;i++){
@@ -548,7 +670,6 @@ function drawChart(){
     ctx.stroke();
   }
   drawLine(dataR,'#3b82f6',2);drawLine(dataF,'#c8cdd8',1.5);drawLine(dataM,'#e63946',2.5);
-  // Current values
   ctx.font='bold 11px Roboto';ctx.textAlign='left';
   const lx=pad.l+8;
   ctx.fillStyle='#e63946';ctx.fillText('Mandata: '+dataM[dataM.length-1].toFixed(1)+'°C',lx,pad.t+14);
@@ -560,8 +681,7 @@ function startChart(){if(chartInterval)return;drawChart();chartInterval=setInter
 function stopChart(){if(chartInterval){clearInterval(chartInterval);chartInterval=null;}}
 
 // === SCHEDULE GRID ===
-const days=['Luned\u00ec','Marted\u00ec','Mercoled\u00ec','Gioved\u00ec','Venerd\u00ec','Sabato','Domenica'];
-// schedule[day][hour] = 0 (off) or setpoint (50, 55, 70)
+const days=['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
 const sched=[
   [0,0,0,0,0,0,55,55,55,0,0,0,0,0,0,0,0,70,70,70,70,70,70,0],
   [0,0,0,0,0,0,55,55,55,0,0,0,0,0,0,0,0,70,70,70,70,70,70,0],
